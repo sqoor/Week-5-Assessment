@@ -12,8 +12,12 @@ Ex:  hello(null) => null
 
 */
 
-function hello() {
+function hello(name) {
   // WRITE YOUR CODE UNDER THIS LINE  
+  if(name === '' || name === null) // if(!name) would be more efficent in case name was not passed.
+    return null;
+  
+  return 'Hello ' + name + ' !';
 
 }
 
@@ -32,9 +36,12 @@ Ex: calculateTax(100,0.15)
 => "You got 100 JD from sales, you should pay 15 JD for tax and you will have 85 JD as net sales."
 */
 
-function calculateTax() {
+function calculateTax(salesNumber, taxRate) {
   // WRITE YOUR CODE UNDER THIS LINE 
+  var taxAmount = salesNumber * taxRate;
+  var netSales = salesNumber - taxAmount;
 
+  return 'You got ' + salesNumber + ' JD from sales, you should pay ' + taxAmount + ' JD tax and you will have ' + netSales + ' JD as net sales.';
 }
 
 
@@ -52,9 +59,30 @@ Ex: repeatChar("a",2); => "a, A"
 Ex: repeatChar("C",5); => "C, c, C, c, C"
 */
 
-function repeatChar() {
+function repeatChar(str, number) {
   // WRITE YOUR CODE UNDER THIS LINE         
+  var output;
+  var counter = 1;
 
+  if(number % 2 !== 0) 
+    str = str.toUpperCase();
+  else 
+    str = str.toLowerCase();
+
+  output = str;
+
+  while(counter < number) {
+    if(str === str.toLowerCase())
+      str = str.toUpperCase();
+    else 
+      str = str.toLowerCase();
+
+    output += ', ' + str;
+    
+    counter++;
+  }
+
+  return output;
 }
 
 
@@ -72,9 +100,16 @@ Ex: stringToCapital("Are you a student in coding ACADEMY by ORANGE ?")
 => "ARE YOU A STUDENT IN CODING ACADEMY BY ORANGE ?"
 */
 
-function stringToCapital() {
+function stringToCapital(str) {
   // WRITE YOUR CODE UNDER THIS LINE         
+  if(str.length === 0)
+    return str.toUpperCase();
 
+  // checks if the character is lowercase not uppercase nor a symbol, for more optimization
+  // var char = str.slice(0, 1).toUpperCase();
+  // char = /a-z/.test(char) ? char.toUpperCase() : char;
+
+  return str.slice(0, 1).toUpperCase() + stringToCapital(str.slice(1));
 }
 
 // Good luck :)
