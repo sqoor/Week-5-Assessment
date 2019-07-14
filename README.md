@@ -9,5 +9,6 @@
 - Don't look to your previous code
 - You have MDN only as a resource and you can use the console to check your code.
 - Please put your code under => WRITE YOUR CODE UNDER THIS LINE.
+- Don't forget to write the parameters (arguments) if the question needs them.
 
 GOOD LUCK 👩‍💻 👨‍💻
